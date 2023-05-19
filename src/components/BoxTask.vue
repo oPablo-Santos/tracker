@@ -1,19 +1,20 @@
 <template>
-  <div class="box has-text-weight-bold">
-    <slot></slot>
-  </div>
-</template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  name: "BoxTask",
-});
-</script>
-
-<style scoped>
-.box {
-  background: #faf0ca;
-}
-</style>
+    <div class="box has-text-weight-bold" :style="estilos">
+      <slot></slot>
+    </div>
+  </template>
+  
+  <script lang="ts">
+  import { defineComponent } from 'vue'
+  
+  export default defineComponent({
+    name: 'BoxTask',
+    data () {
+      return {
+        estilos: {
+          backgroundColor: '#FAF0CA'
+        }
+      }
+    }
+  })
+  </script>
