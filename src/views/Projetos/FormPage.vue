@@ -15,6 +15,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { useStore } from "@/store";
+import { ALTERA_PROJETOS, ADICIONA_PROJETOS } from "@/store/tipo-mutacoes";
+import { TipoNotificacao } from "@/interfaces/INotificacao";
+import useNotificador from "@/hooks/notificador";
+
 export default defineComponent({
   name: "FormPage",
   props: {
@@ -34,21 +38,28 @@ export default defineComponent({
   methods: {
     salvar() {
       if (this.id) {
-        this.store.commit("ALTERA_PROJETOS", {
+        this.store.commit(ALTERA_PROJETOS, {
           id: this.id,
           nome: this.nomeDoProjeto,
         });
       } else {
-        this.store.commit("ADICIONA_PROJETOS", this.nomeDoProjeto);
+        this.store.commit(ADICIONA_PROJETOS, this.nomeDoProjeto);
       }
       this.nomeDoProjeto = "";
+      this.notificar(
+        TipoNotificacao.SUCESSO,
+        "Excelente!",
+        "O projeto foi cadastrado com sucesso"
+      );
       this.$router.push("/projetos");
     },
   },
   setup() {
     const store = useStore();
+    const { notificar } = useNotificador();
     return {
       store,
+      notificar,
     };
   },
 });
