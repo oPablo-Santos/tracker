@@ -19,8 +19,8 @@
           <th>{{ projeto.id }}</th>
           <th>{{ projeto.nome }}</th>
           <td>
-            <router-link to="`/projetos/${projeto.id}`" class="button">
-              <span class="icon is-small"> <i class="fas fa-penci-alt"></i> </span
+            <router-link to="/projetos/${projeto.id}" class="button">
+              <span class="icon is-small"> <i class="fas fa-pencil-alt"></i> </span
             ></router-link>
             <button class="button ml-2 is-danger">
               <span class="icon is-small">
@@ -37,6 +37,7 @@
 import { computed, defineComponent } from "vue";
 import { useStore } from "@/store";
 import { EXCLUIR_PROJETO } from "@/store/tipo-mutacoes";
+import { OBTER_PROJETOS } from "@/store/tipo-acoes";
 export default defineComponent({
   name: "ListaPage",
   methods: {
@@ -46,6 +47,7 @@ export default defineComponent({
   },
   setup() {
     const store = useStore();
+    store.dispatch(OBTER_PROJETOS);
     return {
       projetos: computed(() => store.state.projetos),
       store,

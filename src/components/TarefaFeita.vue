@@ -1,11 +1,14 @@
 <template>
   <BoxTask>
     <div class="columns">
-      <div class="colum">
+      <div class="colum is-4">
         {{ tarefa.descricao || "Tarefa sem descrição" }}
-        <div class="column">
-          <CronometroTrack :tempoEmSegundos="tarefa.duracaoEmSegundos" />
-        </div>
+      </div>
+      <div class="column is-3">
+        {{ tarefa.projeto?.nome || "N/D" }}
+      </div>
+      <div class="column">
+        <CronometroTrack :tempoEmSegundos="tarefa.duracaoEmSegundos" />
       </div>
     </div>
   </BoxTask>

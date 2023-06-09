@@ -2,7 +2,7 @@
   <FormularioTrack @aoSalvarTarefa="salvarTarefa" />
   <div class="lista">
     <BoxTask v-if="listaEstaVazia"> você ainda tem muito a fazer hoje... </BoxTask>
-    <TarefaFeita v-for="(tarefa, index) in tarefas" :key="index" :tarefa="tarefa" />
+    <TarefaFeita v-for="(tarefa, index) in tarefas" :tarefa="tarefa" :key="index" />
   </div>
 </template>
 
