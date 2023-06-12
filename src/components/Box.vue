@@ -1,7 +1,6 @@
 <template>
-  <div class="projetos">
-    <h1 class="title">Projetos</h1>
-    <router-view></router-view>
+  <div class="box has-text-weight-bold">
+    <slot></slot>
   </div>
 </template>
 
@@ -9,12 +8,13 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "ProjetosPage",
+  // eslint-disable-next-line vue/multi-word-component-names
+  name: "Box",
 });
 </script>
 
 <style scoped>
-.projetos {
-  padding: 1.25rem;
+.box {
+  background: #faf0ca;
 }
 </style>

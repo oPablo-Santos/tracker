@@ -1,16 +1,13 @@
 <template>
-  <section>
-    <strong class="display">
-      {{ tempoDecorrido }}
-    </strong>
-  </section>
+  <section><i class="far fa-clock"></i> {{ tempoDecorrido }}</section>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "CronometroTrack",
+  // eslint-disable-next-line vue/multi-word-component-names
+  name: "Cronometro",
   props: {
     tempoEmSegundos: {
       type: Number,
@@ -24,8 +21,4 @@ export default defineComponent({
   },
 });
 </script>
-<style>
-.display {
-  color: var(--texto-primario);
-}
-</style>
+<style></style>

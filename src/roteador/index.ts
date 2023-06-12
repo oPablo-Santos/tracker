@@ -1,33 +1,33 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import TarefasPage from "../views/TarefasPage.vue";
-import ProjetosPage from "../views/ProjetosPage.vue";
-import FormPage from "../views/Projetos/FormPage.vue";
-import ListaPage from "../views/Projetos/ListaPage.vue";
+import Tarefas from "../views/Tarefas.vue";
+import Projetos from "../views/Projetos.vue";
+import Formulario from "../views/Projetos/Formulario.vue";
+import Lista from "../views/Projetos/Lista.vue";
 
 const rotas: RouteRecordRaw[] = [
   {
     path: "/",
     name: "Tarefas",
-    component: TarefasPage,
+    component: Tarefas,
   },
   {
     path: "/projetos",
-    component: ProjetosPage,
+    component: Projetos,
     children: [
       {
         path: "",
-        name: "Projeto",
-        component: ListaPage,
+        name: "Projetos",
+        component: Lista,
       },
       {
         path: "novo",
         name: "Novo projeto",
-        component: FormPage,
+        component: Formulario,
       },
       {
         path: ":id",
-        name: "Editar Projeto",
-        component: FormPage,
+        name: "Editar projeto",
+        component: Formulario,
         props: true,
       },
     ],

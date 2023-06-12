@@ -16,13 +16,15 @@
       </thead>
       <tbody>
         <tr v-for="projeto in projetos" :key="projeto.id">
-          <th>{{ projeto.id }}</th>
-          <th>{{ projeto.nome }}</th>
+          <td>{{ projeto.id }}</td>
+          <td>{{ projeto.nome }}</td>
           <td>
-            <router-link to="/projetos/${projeto.id}" class="button">
-              <span class="icon is-small"> <i class="fas fa-pencil-alt"></i> </span
-            ></router-link>
-            <button class="button ml-2 is-danger">
+            <router-link :to="`/projetos/${projeto.id}`" class="button">
+              <span class="icon is-small">
+                <i class="fas fa-pencil-alt"></i>
+              </span>
+            </router-link>
+            <button class="button ml-2 is-danger" @click="excluir(projeto.id)">
               <span class="icon is-small">
                 <i class="fas fa-trash"></i>
               </span>
@@ -33,13 +35,15 @@
     </table>
   </section>
 </template>
+
 <script lang="ts">
-import { computed, defineComponent } from "vue";
 import { useStore } from "@/store";
+import { computed, defineComponent } from "vue";
 import { EXCLUIR_PROJETO } from "@/store/tipo-mutacoes";
-import { OBTER_PROJETOS } from "@/store/tipo-acoes";
+
 export default defineComponent({
-  name: "ListaPage",
+  // eslint-disable-next-line vue/multi-word-component-names
+  name: "Lista",
   methods: {
     excluir(id: string) {
       this.store.commit(EXCLUIR_PROJETO, id);
@@ -47,7 +51,6 @@ export default defineComponent({
   },
   setup() {
     const store = useStore();
-    store.dispatch(OBTER_PROJETOS);
     return {
       projetos: computed(() => store.state.projetos),
       store,
